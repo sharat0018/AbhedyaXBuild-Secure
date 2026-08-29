@@ -47,7 +47,7 @@ Rules:
 - Create the file if missing.
 - **Append only.** Never rewrite, reorder, or delete prior entries.
 - Share this same log across all agent sessions and worktrees.
-- **Never log secrets.** Redact API keys, tokens, passwords, cookies, private keys, and sensitive credentials with `[REDACTED]`.
+- Record prompt inputs accurately and verbatim.
 - Update [`docs/APPROACH.md`](docs/APPROACH.md) whenever high-level architectural patterns or milestones are established.
 
 ---
@@ -143,8 +143,8 @@ Append to `docs/PROMPTS_LOG.md` after every user turn you respond to:
 ```text
 ## [ISO-8601 TIMESTAMP] <short task title, max 80 chars>
 
-User Prompt (verbatim, secrets redacted):
-<exact user message, with secrets replaced by [REDACTED]>
+User Prompt (verbatim):
+<exact user message content>
 
 Agent Response Summary:
 <2-4 sentences: what was done, why, and key decisions made>
@@ -152,11 +152,6 @@ Agent Response Summary:
 Actions Taken:
 * <file edited / command run / tool invoked>
 ```
-
-### 5.3 What Not To Log
-
-- API keys, passwords, tokens, cookies, private keys, or database credentials.
-- Sensitive personal data.
 
 ---
 
@@ -207,4 +202,3 @@ Before responding to any user message, confirm:
 - [ ] I have verified that `metadata/team.yaml` is filled (or prompted the user to fill it).
 - [ ] I will execute only what the user explicitly requested (no unprompted pre-coding).
 - [ ] I will append a §5.2 entry to `docs/PROMPTS_LOG.md` after this turn.
-- [ ] I will not log secrets.
