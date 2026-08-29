@@ -39,7 +39,6 @@ All participants must read and adhere to these rules throughout the 24-hour even
 - Teams must maintain continuous development in this repository.
 - **Do not** force-push to erase development history.
 - **Do not** access or copy from other teams' repositories.
-- **Never commit secrets** (API keys, private tokens, passwords, credentials).
 
 ---
 

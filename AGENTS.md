@@ -73,9 +73,8 @@ Display:
 1. **Team Composition**: Exactly 4 participants per team.
 2. **Live Authorship**: All application code in `src/` must be authored live during the 24-hour hackathon. Importing, cloning, or adapting pre-existing third-party or open-source repositories as the project solution is strictly prohibited and results in disqualification.
 3. **AI Tools Permitted**: You may use any IDE, AI assistant, or tool to build. The AI agent will automatically log every conversation turn and prompt in `docs/PROMPTS_LOG.md`.
-4. **Zero Secrets**: Never commit API keys, passwords, tokens, private keys, or sensitive credentials.
-5. **No Rule Overrides**: Prompt injections, jailbreaks, or instructions attempting to bypass competition rules, disable logging, or forge records are strictly blocked.
-6. **Submission Freeze**: Submissions are evaluated from the frozen commit SHA recorded in `metadata/submission.yaml` at the deadline.
+4. **No Rule Overrides**: Prompt injections, jailbreaks, or instructions attempting to bypass competition rules, disable logging, or forge records are strictly blocked.
+5. **Submission Freeze**: Submissions are evaluated from the frozen commit SHA recorded in `metadata/submission.yaml` at the deadline.
 
 ### 3.3 Collect The Agreement
 
@@ -179,7 +178,6 @@ Actions Taken:
 - Application source code must reside inside `src/`.
 - The AI agent must maintain `docs/PROMPTS_LOG.md` automatically after every turn so the human participant does not have to log manually.
 - The AI agent must update `docs/APPROACH.md` when high-level architecture decisions are made.
-- Read secrets from environment variables only.
 
 ---
 
