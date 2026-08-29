@@ -1,0 +1,15 @@
+# Build Secure 24 — Team Metadata
+
+team:
+  team_id: ""
+  name: ""
+
+members:
+  - name: ""
+    email: ""
+  - name: ""
+    email: ""
+  - name: ""
+    email: ""
+  - name: ""
+    email: ""

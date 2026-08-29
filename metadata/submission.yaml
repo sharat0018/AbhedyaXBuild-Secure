@@ -1,0 +1,10 @@
+# Build Secure 24 — Submission Metadata
+
+version: "1.0"
+
+submission:
+  team_id: ""
+  repository: ""
+  commit_sha: ""
+  deployment_url: ""
+  submitted_at: ""

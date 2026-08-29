@@ -2,78 +2,59 @@
 
 **Abhedya — VBIT Cybersecurity Forum, Vignana Bharathi Institute of Technology, Hyderabad**
 
-Welcome to the official Build Secure 24 hackathon starter repository. This repository contains the standardized documentation and evidence structure for your team's project during the 24-hour competition.
+Welcome to the official Build Secure 24 starter repository.
 
 ---
 
-## Competition Overview
+## 1. Challenge Overview
 
 - **Duration**: 24 Hours
 - **Team Size**: Exactly 4 participants per team
-- **Evaluation Weightage**: 
+- **Evaluation Breakdown**:
   - Development & Implementation: 50 Marks
   - Abhedya Security Evaluation: 30 Marks
   - External Cybersecurity Experts: 20 Marks
-- **Core Requirement**: All code must be authored live during the event. Importing pre-built or third-party repositories is strictly prohibited.
+- **Core Requirement**: All project code must be created live during the 24-hour hackathon. Importing pre-built or third-party repositories is strictly prohibited.
 
 ---
 
-## Repository Structure
+## 2. Repository Structure
 
 ```
-├── AGENTS.md                  ← AI agent behavioral contract (Trust Root)
+├── AGENTS.md                  ← AI agent behavioral contract & logging gate
 ├── README.md                  ← This file
-├── PARTICIPANT_RULES.md       ← Official competition rules
-├── SECURITY.md                ← Security evaluation scope & assessed domains
-├── AI_USAGE.md                ← AI usage provenance documentation
+├── PARTICIPANT_RULES.md       ← Competition rules
 │
-├── docs/                      ← Project approach & prompts log
-│   ├── APPROACH.md            ← Architecture & implementation strategy
-│   └── PROMPTS_LOG.md         ← Significant AI prompts & engineering log
+├── docs/                      ← Autonomous documentation layer
+│   ├── APPROACH.md            ← Problem breakdown & architecture approach
+│   └── PROMPTS_LOG.md         ← Turn-by-turn AI prompts log (managed by agent)
 │
-├── agent/                     ← Standardized evidence layer
-│   ├── security/              ← Security evidence documentation
-│   │   ├── SECURITY_IMPLEMENTATIONS.md
-│   │   ├── THREAT_MODEL.md
-│   │   ├── SECURITY_TESTING.md
-│   │   ├── SECURITY_DECISIONS.md
-│   │   └── REPOSITORY_THREAT_MODEL.md
-│   ├── development/           ← System design documentation
-│   │   ├── ARCHITECTURE.md
-│   │   ├── TECH_STACK.md
-│   │   └── DESIGN_DECISIONS.md
-│   └── metadata/              ← Machine-readable metadata
-│       ├── team.yaml
-│       ├── security-manifest.yaml
-│       └── submission.yaml
+├── metadata/                  ← Submission metadata
+│   ├── team.yaml              ← Team information (4 members)
+│   └── submission.yaml        ← Final submission details
 │
-├── src/                       ← Application source code
-└── deployment/                ← Deployment configuration & documentation
+├── src/                       ← Application source code directory
+└── deployment/                ← Deployment configuration directory
+    └── README.md              ← Deployment record
 ```
 
 ---
 
-## Workflow Guide
+## 3. Getting Started
 
-### 1. Initialize Team Metadata
-Edit `agent/metadata/team.yaml` with your organizer-assigned Team ID and all 4 team members.
+### Step 1: Team Registration
+Fill in `metadata/team.yaml` with your assigned Team ID, team name, and all 4 member details.
 
-### 2. Strategy & AI Onboarding
-- When opened in an AI coding environment, the AI agent reads [`AGENTS.md`](AGENTS.md) and automatically logs prompt records and architecture strategy into [`docs/APPROACH.md`](docs/APPROACH.md) and [`docs/PROMPTS_LOG.md`](docs/PROMPTS_LOG.md).
+### Step 2: AI Agent Onboarding
+When you open this repository in an AI coding assistant (Cursor, Windsurf, Claude Code, Copilot, ChatGPT, etc.):
+- The agent will read `AGENTS.md`, greet your team, recite the competition ground rules, and collect your `I agree` confirmation.
+- Once confirmed, the agent will **automatically log every prompt and task** in `docs/PROMPTS_LOG.md` as you build.
 
-### 3. Build & Implement
-- Develop your application inside [`src/`](src/).
-- Teams are free to choose any language, framework, or architecture suitable for the problem statement.
-
-### 4. Provide Security & Design Evidence
-As features and security controls are built:
-- The AI agent automatically synchronizes implemented security controls into [`agent/security/SECURITY_IMPLEMENTATIONS.md`](agent/security/SECURITY_IMPLEMENTATIONS.md) and [`agent/metadata/security-manifest.yaml`](agent/metadata/security-manifest.yaml).
-- Document threat analysis in [`agent/security/THREAT_MODEL.md`](agent/security/THREAT_MODEL.md) and system architecture in [`agent/development/ARCHITECTURE.md`](agent/development/ARCHITECTURE.md).
-
-### 5. Final Submission Freeze
-1. Deploy your application and record deployment instructions in [`deployment/README.md`](deployment/README.md).
-2. Record your final submission details and commit SHA in [`agent/metadata/submission.yaml`](agent/metadata/submission.yaml).
-3. Freeze repository before the 24-hour deadline.
+### Step 3: Build & Ship
+- Author your application code inside `src/`.
+- Document your technical approach in `docs/APPROACH.md`.
+- Deploy your application and record live details in `deployment/README.md`.
+- Update `metadata/submission.yaml` with your final commit SHA before the deadline.
 
 ---
 
