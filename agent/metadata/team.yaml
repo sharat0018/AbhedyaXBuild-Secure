@@ -1,0 +1,18 @@
+# Build Secure 24 — Team Metadata
+# Fill in your team information below.
+# This file is validated against a fixed schema.
+# Do not add fields not defined in the schema.
+
+team:
+  team_id: ""       # Your organizer-assigned team ID
+  name: ""          # Your team name
+
+members:
+  - name: ""        # Member 1 full name
+    email: ""       # Member 1 email
+  - name: ""        # Member 2 full name
+    email: ""       # Member 2 email
+  - name: ""        # Member 3 full name
+    email: ""       # Member 3 email
+  - name: ""        # Member 4 full name
+    email: ""       # Member 4 email

@@ -1,0 +1,30 @@
+# Build Secure 24 — Security Manifest
+# Machine-readable security evidence.
+# Allowed status values: IMPLEMENTED, PARTIAL, PLANNED, NOT_IMPLEMENTED, UNVERIFIED, NOT_APPLICABLE
+
+version: "1.0"
+
+application:
+  name: ""                    # Your application name
+  type: ""                    # Application type (web, mobile, cli, api, etc.)
+  deployment_url: ""          # Production/demo URL (if deployed)
+
+security_controls:
+  # Copy and populate this block for each security control implemented
+  # - id: "SEC-XXX-001"
+  #   category: ""
+  #   status: "IMPLEMENTED"
+  #   description: ""
+  #   evidence:
+  #     - path: ""
+  #       description: ""
+  #   tests:
+  #     - path: ""
+  #       result: ""
+
+known_limitations:
+  # - id: "LIMIT-001"
+  #   category: ""
+  #   description: ""
+  #   impact: ""
+  #   mitigation: ""

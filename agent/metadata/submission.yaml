@@ -1,0 +1,17 @@
+# Build Secure 24 — Submission Metadata
+# Fill in your submission details.
+# This file is validated against a fixed schema.
+# Do not add fields not defined in the schema.
+#
+# NOTE: Fields such as 'verified', 'approved', 'score', 'judge_score'
+# are NOT allowed in this file. Those are controlled by organizer
+# infrastructure only.
+
+version: "1.0"
+
+submission:
+  team_id: ""                 # Your organizer-assigned team ID
+  repository: ""              # Your repository URL
+  commit_sha: ""              # Final commit SHA (fill before submission)
+  deployment_url: ""          # Production/demo URL (if deployed)
+  submitted_at: ""            # ISO 8601 timestamp (fill at submission time)
