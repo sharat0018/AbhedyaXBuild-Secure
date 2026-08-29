@@ -43,13 +43,9 @@ All participants must read and adhere to these rules throughout the 24-hour even
 
 ---
 
-## 5. Security Evaluation (50% of Total Score)
+## 5. Submission Evaluation
 
-- Evaluation Weightage:
-  - Development: 50 Marks
-  - Abhedya Security Evaluation: 30 Marks
-  - External Cybersecurity Experts: 20 Marks
-- Evaluators will test the submitted code and deployment for robustness, security handling, and design quality.
+- Submissions will be evaluated based on the project implementation, architecture, and live deployment.
 
 ---
 

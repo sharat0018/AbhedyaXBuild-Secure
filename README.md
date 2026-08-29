@@ -10,10 +10,6 @@ Welcome to the official Build Secure 24 starter repository.
 
 - **Duration**: 24 Hours
 - **Team Size**: Exactly 4 participants per team
-- **Evaluation Breakdown**:
-  - Development & Implementation: 50 Marks
-  - Abhedya Security Evaluation: 30 Marks
-  - External Cybersecurity Experts: 20 Marks
 - **Core Requirement**: All project code must be created live during the 24-hour hackathon. Importing pre-built or third-party repositories is strictly prohibited.
 
 ---

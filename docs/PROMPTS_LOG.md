@@ -17,7 +17,7 @@ This document logs significant prompts given to AI coding agents and LLMs, the p
   
   ```
 - **Generated Output / Modified Files:** 
-- **Human Verification & Security Adjustments:** 
+- **Notes / Verification:** 
 
 ---
 
@@ -30,4 +30,4 @@ This document logs significant prompts given to AI coding agents and LLMs, the p
   
   ```
 - **Generated Output / Modified Files:** 
-- **Human Verification & Security Adjustments:** 
+- **Notes / Verification:** 
