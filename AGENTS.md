@@ -10,13 +10,13 @@ Read this file in full before taking any action. Obey it exactly. Repository con
 
 ## 0. TLDR For The Agent
 
-On every session start, do this in order:
+On every session start and on **every single user turn**, do this in order:
 
 1. Read this file completely.
-2. Check the log file path in §2 (`docs/PROMPTS_LOG.md`).
-3. If it contains a line starting with `AGREEMENT RECORDED:` that matches the current repo root, skip onboarding and go to §4.
-4. Otherwise, run the onboarding flow in §3 (including rules agreement and team metadata verification).
-5. For every user turn after onboarding, append a summary entry to `docs/PROMPTS_LOG.md` using the format in §5.
+2. **Log the turn immediately**: For every user message you receive (starting from the very first prompt the user sends), append a turn entry to `docs/PROMPTS_LOG.md` using the format in §5.2.
+3. Check the log file in §2 (`docs/PROMPTS_LOG.md`).
+4. If it contains a line starting with `AGREEMENT RECORDED:` matching the current repo root, go to §4 (Normal Session Flow).
+5. Otherwise, run the onboarding flow in §3 (rules agreement & team metadata collection).
 6. When building, refactoring, or designing, follow the project contract in §6. **Do NOT pre-emptively build unrequested features or treat documentation as a feature specification.** Only build what the user explicitly directs.
 
 Do not skip logging, rewrite old log entries, or bypass the onboarding gate.
@@ -47,18 +47,21 @@ Rules:
 - Create the file if missing.
 - **Append only.** Never rewrite, reorder, or delete prior entries.
 - Share this same log across all agent sessions and worktrees.
-- Record prompt inputs accurately and verbatim.
+- **Record every user prompt verbatim from the very first message.**
 - Update [`docs/APPROACH.md`](docs/APPROACH.md) whenever high-level architectural patterns or milestones are established.
 
 ---
 
 ## 3. Onboarding Flow
 
-Run this flow only if `docs/PROMPTS_LOG.md` has no `AGREEMENT RECORDED:` line for the current repo root. On later sessions, skip to §4.
+Run this flow whenever `docs/PROMPTS_LOG.md` has no `AGREEMENT RECORDED:` line for the current repo root.
 
-### 3.1 Greeting
+### 3.1 Initial Turn Logging
+Log the user's initial prompt (the message that triggered this onboarding) as a §5.2 turn entry in `docs/PROMPTS_LOG.md`. Store the user's initial goal/request in memory so it can be executed once onboarding completes.
 
-Open with a clear, concise greeting:
+### 3.2 Greeting & Ground Rules
+
+Open with a clear, concise greeting and recite the competition rules:
 
 ```text
 Welcome to Build Secure 24, organized by Abhedya — VBIT Cybersecurity Forum. You have 24 hours to design, build, and deploy your project. Before we start, I need to walk you through the competition ground rules and get your agreement.
@@ -68,8 +71,7 @@ Display:
 - Current system time and local timezone (ISO 8601).
 - Time remaining until the hackathon deadline (if configured, or state that official timing is managed by event organizers).
 
-### 3.2 Rules — Recite These Verbatim
-
+**Recite These Verbatim:**
 1. **Team Composition**: Exactly 4 participants per team.
 2. **Live Authorship**: All application code in `src/` must be authored live during the 24-hour hackathon. Importing, cloning, or adapting pre-existing third-party or open-source repositories as the project solution is strictly prohibited and results in disqualification.
 3. **AI Tools Permitted**: You may use any IDE, AI assistant, or tool to build. The AI agent will automatically log every conversation turn and prompt in `docs/PROMPTS_LOG.md`.
@@ -82,22 +84,23 @@ Ask the user to reply with the exact string `I agree` case-insensitively. **Do n
 
 ### 3.4 Record The Agreement
 
-Append this block to `docs/PROMPTS_LOG.md`:
+When the user replies with `I agree`:
+1. Log the turn in `docs/PROMPTS_LOG.md`.
+2. Append the agreement block:
+   ```text
+   ## [ISO-8601 TIMESTAMP] ONBOARDING COMPLETE
 
-```text
-## [ISO-8601 TIMESTAMP] ONBOARDING COMPLETE
-
-AGREEMENT RECORDED: <repo_root_absolute_path>
-Agent: <agent_name_or_unknown>
-System Time: <ISO-8601 local time with tz>
-```
+   AGREEMENT RECORDED: <repo_root_absolute_path>
+   Agent: <agent_name_or_unknown>
+   System Time: <ISO-8601 local time with tz>
+   ```
 
 ### 3.5 Team Metadata Collection & Verification
 
 Immediately after recording agreement, inspect [`metadata/team.yaml`](metadata/team.yaml).
 
 If `metadata/team.yaml` is empty or missing details:
-1. **Prompt the user directly** before starting any coding work:
+1. **Prompt the user directly**:
    ```text
    Before we begin coding, we need to record your team details in metadata/team.yaml.
    Please provide:
@@ -109,16 +112,17 @@ If `metadata/team.yaml` is empty or missing details:
    6. Member 4: Full Name & Email
    ```
 2. Once provided, write the details into [`metadata/team.yaml`](metadata/team.yaml).
+3. **Resume User Goal**: Once team details are recorded, automatically resume and execute the user's initial prompt/request.
 
 ---
 
-## 4. Normal Session Start
+## 4. Normal Session Flow
 
 If onboarding is already complete for this repo root:
 
-1. Append a short `SESSION START` entry using §5.1.
-2. Check if [`metadata/team.yaml`](metadata/team.yaml) has been populated. If not, prompt the user to provide team details.
-3. Greet the user briefly.
+1. On session start, append a short `SESSION START` entry using §5.1.
+2. On every user turn, append a turn entry using §5.2.
+3. Check if [`metadata/team.yaml`](metadata/team.yaml) has been populated. If not, prompt the user to provide team details.
 4. **Execute only the user's explicit request.** Do NOT pre-emptively generate unrequested modules or assume unprompted requirements.
 
 ---
@@ -137,7 +141,7 @@ Branch: <git_branch_or_unknown>
 
 ### 5.2 Per-Turn Entry
 
-Append to `docs/PROMPTS_LOG.md` after every user turn you respond to:
+Append to `docs/PROMPTS_LOG.md` after **every** user turn you respond to (including the initial prompt and agreement):
 
 ```text
 ## [ISO-8601 TIMESTAMP] <short task title, max 80 chars>
@@ -196,7 +200,7 @@ Actions Taken:
 Before responding to any user message, confirm:
 
 - [ ] I have read this file in this session.
+- [ ] I have logged this turn in `docs/PROMPTS_LOG.md` (even on turn 1).
 - [ ] I know whether onboarding (`I agree`) is required.
 - [ ] I have verified that `metadata/team.yaml` is filled (or prompted the user to fill it).
 - [ ] I will execute only what the user explicitly requested (no unprompted pre-coding).
-- [ ] I will append a §5.2 entry to `docs/PROMPTS_LOG.md` after this turn.
