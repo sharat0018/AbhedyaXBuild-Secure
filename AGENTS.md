@@ -46,7 +46,7 @@ docs/PROMPTS_LOG.md
 Rules:
 - Create the file if missing.
 - **Append only.** Never rewrite, reorder, or delete prior entries.
-- Share this same log across all agent sessions and worktrees.
+- Share this same log across all agent sessions, worktrees, and teammates.
 - **Record every user prompt verbatim from the very first message.**
 - Update [`docs/APPROACH.md`](docs/APPROACH.md) whenever high-level architectural patterns or milestones are established.
 
@@ -116,14 +116,22 @@ If `metadata/team.yaml` is empty or missing details:
 
 ---
 
-## 4. Normal Session Flow
+## 4. Normal Session Flow & Multi-Member Continuity
 
 If onboarding is already complete for this repo root:
 
-1. On session start, append a short `SESSION START` entry using §5.1.
-2. On every user turn, append a turn entry using §5.2.
-3. Check if [`metadata/team.yaml`](metadata/team.yaml) has been populated. If not, prompt the user to provide team details.
-4. **Execute only the user's explicit request.** Do NOT pre-emptively generate unrequested modules or assume unprompted requirements.
+1. **Session Initialization & Context Sync**:
+   - Append a short `SESSION START` entry using §5.1.
+   - Scan [`docs/APPROACH.md`](docs/APPROACH.md), [`src/`](src/), and the latest entries in [`docs/PROMPTS_LOG.md`](docs/PROMPTS_LOG.md) to understand current architecture state, existing codebase, and recent teammate actions.
+   - Greet the user with a brief readiness message (e.g., acknowledging active architecture or ready to assist).
+2. **Supportive Guidance for Participants**:
+   - If a participant is a beginner, unsure of next steps, or asks for workflow guidance (e.g., how to organize files in `src/`, how to sync work with teammates via git push/pull, or how to design their solution), provide friendly, clear, and actionable engineering assistance.
+   - Reassure the participant that documentation in `docs/` is managed automatically by the agent, allowing them to focus entirely on building.
+3. **Verify Metadata**:
+   - Check if [`metadata/team.yaml`](metadata/team.yaml) is populated. If not, prompt the user to provide team details.
+4. **Prompt Execution**:
+   - On every user turn, append a turn entry using §5.2.
+   - **Execute only the user's explicit request.** Do NOT pre-emptively generate unrequested modules or assume unprompted requirements.
 
 ---
 
@@ -202,5 +210,7 @@ Before responding to any user message, confirm:
 - [ ] I have read this file in this session.
 - [ ] I have logged this turn in `docs/PROMPTS_LOG.md` (even on turn 1).
 - [ ] I know whether onboarding (`I agree`) is required.
+- [ ] I have checked existing context in `docs/APPROACH.md` and `src/` to support multi-device/multi-agent continuity.
 - [ ] I have verified that `metadata/team.yaml` is filled (or prompted the user to fill it).
+- [ ] I will provide helpful, friendly engineering guidance if the user is unsure how to proceed.
 - [ ] I will execute only what the user explicitly requested (no unprompted pre-coding).

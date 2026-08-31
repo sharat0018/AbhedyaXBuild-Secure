@@ -54,4 +54,24 @@ When you open this repository in an AI coding assistant (Cursor, Windsurf, Claud
 
 ---
 
+## 4. Multi-Device Team Collaboration
+
+All 4 team members can work simultaneously across separate laptops:
+
+1. **Clone**: Every teammate clones your team's GitHub repository to their device.
+2. **Syncing Progress**:
+   - When one teammate finishes a feature or prompt:
+     ```bash
+     git add src/ docs/
+     git commit -m "feat: implement feature description"
+     git push origin main
+     ```
+   - Other teammates pull the latest updates:
+     ```bash
+     git pull origin main
+     ```
+3. **Agent Continuity**: When a teammate opens the updated repo on their laptop, their AI assistant automatically reads `docs/APPROACH.md` and recent `docs/PROMPTS_LOG.md` entries, immediately picking up where the team left off.
+
+---
+
 *Build freely. Use AI freely. Secure what you build. Document what you claim. Prove what you implemented.*
